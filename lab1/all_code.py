@@ -219,7 +219,6 @@ def load_and_prepare_data():
 
 X_train, y_train, X_test, y_test = load_and_prepare_data()
 scores = compute_all_scores_for_knn(X_train, y_train, cv=LeaveOneOut(), scoring=Accuracy())
-print(scores)
 best_k = search_best_k(scores)
 plot_val_for_knn(scores, best_k)
 clf = ParzenWindowClassifier(k=best_k)
