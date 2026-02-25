@@ -13,7 +13,7 @@ class LeaveOneOut:
             test_ind = np.array([i])
             yield train_ind, test_ind
 
-def cross_val_score(estimator, cv, scoring, X: np.ndarray, y: np.ndarray) -> float:
+def cross_val_score(estimator, X: np.ndarray, y: np.ndarray, cv, scoring) -> float:
     # Вычисляет среднюю метрику качества на кросс-валидации
     # estimator, cv, scoring не аннотируем типами, т.к. могут быть разные реализации
     sum_scores = 0
@@ -43,8 +43,8 @@ def train_test_split(
         np.random.shuffle(indices)
     
     # Индексы для train/test
-    ind_train = indices[:n_test]
-    ind_test = indices[n_test:]
+    ind_train = indices[n_test:]
+    ind_test = indices[:n_test]
     
     X_train = X[ind_train]
     X_test = X[ind_test]

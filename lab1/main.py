@@ -13,15 +13,7 @@ def plot_val_for_knn(scores, best_k):
     plt.title('Зависимость ошибки LOO от параметра k', fontsize=14)
     plt.grid(True, alpha=0.3)
     plt.legend(fontsize=11)
-    #И без k=1
-    plt.figure(figsize=(10, 6))
-    plt.plot([i for i in range(2, 30)], scores[1:], 'b-o', label="LOO ошибка")
-    plt.plot(best_k, scores[best_k - 1], 'r*', label=f"Оптимальное k={best_k}")
-    plt.xlabel('k (количество соседей)', fontsize=12)
-    plt.ylabel('Ошибка LOO', fontsize=12)
-    plt.title('Без k = 1', fontsize=14)
-    plt.grid(True, alpha=0.3)
-    plt.legend(fontsize=11)
+    
 def compute_all_scores_for_knn(X, y, cv, scoring):
     scores = []
     for k in range(1, 30):
